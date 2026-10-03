@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="by">
+<head>
+    <title>прикол</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css"/>
+    <script type="module" src="https://esm.run/@material/web/all.js"></script>
+</head>
+
+<body>
+<div class="center-div">
+    <article class="css-selectors-guide">
+        <h1>Справочник: CSS Псевдоклассы и Псевдоэлементы</h1>
+        <p>Псевдоклассы (<code>:</code>) определяют состояние или структуру элемента, а псевдоэлементы (<code>::</code>)
+            позволяют обратиться к специфической части элемента или создать новые виртуальные блоки.</p>
+
+        <section class="pseudo-classes">
+            <h2>Псевдоклассы (одно двоеточие <code>:</code>)</h2>
+
+            <h3>Состояния пользователя и интерактивность</h3>
+            <ul>
+                <li><strong><code>:hover</code></strong> — элемент под курсором мыши. Применяется для создания
+                    интерактивных эффектов при наведении.
+                </li>
+                <li><strong><code>:active</code></strong> — элемент в момент активации (например, зажата левая кнопка
+                    мыши на кнопке).
+                </li>
+                <li><strong><code>:focus</code></strong> — элемент в фокусе (например, активное поле ввода или
+                    выделенная ссылка).
+                </li>
+                <li><strong><code>:focus-visible</code></strong> — срабатывает только тогда, когда браузер считает
+                    нужным показать контур фокуса (идеально для стилизации навигации с клавиатуры, не мешая
+                    пользователям мыши).
+                </li>
+                <li><strong><code>:focus-within</code></strong> — применяется к родителю, если любой вложенный в него
+                    элемент получил фокус (удобно для подсветки всей формы, когда активен один инпут).
+                </li>
+            </ul>
+
+            <h3>Ссылки и история</h3>
+            <ul>
+                <li><strong><code>:link</code></strong> — непосещённая ссылка (работает только для тегов
+                    <code>&lt;a&gt;</code> с атрибутом <code>href</code>).
+                </li>
+                <li><strong><code>:visited</code></strong> — ссылка, по которой пользователь уже переходил (из
+                    соображений безопасности браузеры сильно ограничивают стили для этого состояния, разрешая менять в
+                    основном только цвет).
+                </li>
+                <li><strong><code>:any-link</code></strong> — соответствует любой ссылке (объединяет <code>:link</code>
+                    и <code>:visited</code>).
+                </li>
+            </ul>
+
+            <h3>Состояния форм и элементов ввода</h3>
+            <ul>
+                <li><strong><code>:checked</code></strong> — выбранный чекбокс (<code>type="checkbox"</code>),
+                    радиокнопка (<code>type="radio"</code>) или элемент <code>&lt;option&gt;</code> в селекте.
+                </li>
+                <li><strong><code>:disabled</code></strong> — заблокированный, неактивный элемент интерфейса (нельзя
+                    кликнуть или сфокусироваться).
+                </li>
+                <li><strong><code>:enabled</code></strong> — включённый (активный) элемент интерфейса, готовый к
+                    взаимодействию.
+                </li>
+                <li><strong><code>:required</code></strong> — поле формы с атрибутом <code>required</code> (обязательное
+                    для заполнения).
+                </li>
+                <li><strong><code>:optional</code></strong> — необязательное поле формы (без атрибута
+                    <code>required</code>).
+                </li>
+                <li><strong><code>:valid</code> / <code>:invalid</code></strong> — поле, содержимое которого прошло или
+                    не прошло встроенную HTML5-валидацию (например, правильность email).
+                </li>
+                <li><strong><code>:read-only</code> / <code>:read-write</code></strong> — элементы только для чтения (с
+                    атрибутом <code>readonly</code>) или доступные для редактирования.
+                </li>
+                <li><strong><code>:placeholder-shown</code></strong> — поле ввода, которое в данный момент пустое и
+                    показывает плейсхолдер. Как только пользователь вводит первый символ, псевдокласс перестает
+                    работать.
+                </li>
+                <li><strong><code>:blank</code></strong> — пустой элемент ввода. <em>Примечание: на данный момент
+                    экспериментальная функция со слабой поддержкой браузерами.</em></li>
+            </ul>
+
+            <h3>Структурные и позиционные селекторы</h3>
+            <ul>
+                <li><strong><code>:first-child</code></strong> — самый первый дочерний элемент внутри своего родителя.
+                </li>
+                <li><strong><code>:last-child</code></strong> — самый последний дочерний элемент внутри родителя.</li>
+                <li><strong><code>:only-child</code></strong> — единственный дочерний элемент (у родителя больше нет
+                    других потомков).
+                </li>
+                <li><strong><code>:first-of-type</code></strong> — первый элемент определённого тега среди своих соседей
+                    (например, первый <code>&lt;p&gt;</code> в блоке, даже если перед ним есть <code>&lt;h1&gt;</code>).
+                </li>
+                <li><strong><code>:last-of-type</code></strong> — последний элемент определённого тега среди соседей.
+                </li>
+                <li><strong><code>:only-of-type</code></strong> — единственный элемент своего типа внутри родителя.</li>
+                <li><strong><code>:nth-child(n)</code></strong> — выбор элементов по формуле. Например, <code>:nth-child(odd)</code>
+                    для нечётных, <code>:nth-child(even)</code> для чётных, или <code>:nth-child(3n)</code> для каждого
+                    третьего.
+                </li>
+                <li><strong><code>:nth-last-child(n)</code></strong> — то же самое, но отсчёт начинается с конца списка.
+                </li>
+                <li><strong><code>:nth-of-type(n)</code></strong> — выбор по формуле, но считаются только элементы
+                    указанного типа.
+                </li>
+                <li><strong><code>:empty</code></strong> — полностью пустой элемент (внутри нет ни других тегов, ни
+                    пробелов, ни текста).
+                </li>
+            </ul>
+
+            <h3>Логические псевдоклассы и функции</h3>
+            <ul>
+                <li><strong><code>:not(selector)</code></strong> — отрицание. Исключает элементы, подходящие под
+                    переданный селектор (например, <code>p:not(.highlight)</code> — все абзацы, кроме выделенных).
+                </li>
+                <li><strong><code>:is(selectorList)</code></strong> — упрощает группировку селекторов и сокращает код.
+                    Принимает специфичность самого "тяжёлого" селектора в списке.
+                </li>
+                <li><strong><code>:where(selectorList)</code></strong> — работает точно так же, как <code>:is()</code>,
+                    но всегда имеет нулевую специфичность (его стили очень легко переопределить ниже по коду).
+                </li>
+                <li><strong><code>:has(selector)</code></strong> — родительский селектор. Применяет стили к элементу,
+                    если внутри него найден указанный потомок (например, <code>a:has(img)</code> стилизует только те
+                    ссылки, внутри которых есть картинка).
+                </li>
+                <li><strong><code>:dir(direction)</code></strong> — выбор по направлению текста (<code>ltr</code> —
+                    слева направо, <code>rtl</code> — справа налево).
+                </li>
+                <li><strong><code>:lang(language)</code></strong> — выбор элемента по языковому атрибуту (например,
+                    <code>:lang(ru)</code>).
+                </li>
+                <li><strong><code>:target</code></strong> — стилизует элемент, <code>id</code> которого совпадает с
+                    хэшем в текущем URL адресной строки (например, <code>#section1</code>). Позволяет делать табы и
+                    модальные окна на чистом CSS.
+                </li>
+            </ul>
+        </section>
+
+        <section class="pseudo-elements">
+            <h2>Псевдоэлементы (два двоеточия <code>::</code>)</h2>
+
+            <ul>
+                <li><strong><code>::before</code></strong> — создаёт первый виртуальный элемент внутри выбранного тега.
+                    Строго требует наличия CSS-свойства <code>content: "";</code> для отображения.
+                </li>
+                <li><strong><code>::after</code></strong> — создаёт последний виртуальный элемент внутри выбранного
+                    тега. Также требует свойство <code>content: "";</code>. Часто используется для иконок или
+                    декоративных элементов.
+                </li>
+                <li><strong><code>::first-letter</code></strong> — стилизует первую букву текста в блоке (создание
+                    буквицы).
+                </li>
+                <li><strong><code>::first-line</code></strong> — стилизует первую видимую строку текста. Адаптируется
+                    при изменении ширины экрана (слова, перенесённые на вторую строку, теряют этот стиль).
+                </li>
+                <li><strong><code>::selection</code></strong> — меняет внешний вид текста (обычно цвет фона и шрифта),
+                    который пользователь выделил курсором мыши.
+                </li>
+                <li><strong><code>::placeholder</code></strong> — стилизует текст-подсказку атрибута
+                    <code>placeholder</code> внутри полей ввода.
+                </li>
+                <li><strong><code>::marker</code></strong> — позволяет изменить цвет, размер или символ маркера у
+                    элементов списка (<code>&lt;li&gt;</code>) или стрелки у тега <code>&lt;summary&gt;</code>.
+                </li>
+                <li><strong><code>::backdrop</code></strong> — стилизует область (фон) позади элементов, открытых в
+                    полноэкранном режиме (Fullscreen API) или модальных окон (тег <code>&lt;dialog&gt;</code>). Полезно
+                    для создания затемнения.
+                </li>
+                <li><strong><code>::file-selector-button</code></strong> — позволяет стилизовать стандартную системную
+                    кнопку «Выберите файл» внутри <code>&lt;input type="file"&gt;</code>.
+                </li>
+            </ul>
+        </section>
+    </article>
+</div>
+<script src="g.js" defer></script>
+</body>
+</html>
